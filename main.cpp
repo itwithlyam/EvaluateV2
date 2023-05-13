@@ -6,11 +6,16 @@
 int main() {
   std::cout << "New compiler thing fun\n";
 	std::string program = readFile("program.txt");
-	std::vector<std::string> Tokens = lexer(program);
-	Tokens.shrink_to_fit();
-	std::cout << "\nVector elements are: ";
-	for (auto it = Tokens.begin(); it != Tokens.end(); it++)
-			std::cout << *it << " ";
+	std::vector<std::string>* Tokens = lexer(program);
+	std::vector<std::string> TokenTable = *Tokens;
+	std::vector<std::string> TokenContent = *(Tokens + 1);
+	std::cout << "\nToken table elements are: ";
+	for (auto it = TokenTable.begin(); it != TokenTable.end(); it++)
+			std::cout << *it << "\n";
+
+	std::cout << "\nToken content elements are: ";
+	for (auto it = TokenContent.begin(); it != TokenContent.end(); it++)
+			std::cout << *it << "\n";
 }
 
 

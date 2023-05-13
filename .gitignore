@@ -7,6 +7,8 @@
 *.o
 *.obj
 
+main
+
 # Precompiled Headers
 *.gch
 *.pch
@@ -30,3 +32,8 @@
 *.exe
 *.out
 *.app
+
+.replit
+replit.nix
+.git
+.ccls-cache
