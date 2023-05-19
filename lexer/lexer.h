@@ -11,6 +11,11 @@ public:
 		content = m_content;
 	}
 
+	Token(int m_type) {
+		type = m_type;
+		content = "";
+	}
+
 	int getType() {
 		return type;
 	}
