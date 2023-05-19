@@ -1,53 +1,43 @@
 #include <string>
-#include "lexer.h"
-#include <regex>
-#include <iostream>
 #include <vector>
+#include "lexer.h"
+#include "../util.h"
+#include <iostream>
 
+class Token {
+public:
+	int type;
+	std::string content;
 
-std::vector<std::string>* lexer(std::string input) {
-	std::vector<std::string> wordVector;
-	std::stringstream stringStream(input);
-	std::string line;
-	
-	while(std::getline(stringStream, line)) 
-	{
-	    std::size_t prev = 0, pos;
-	    while ((pos = line.find_first_of(" ';\"", prev)) != std::string::npos)
-	    {
-	        if (pos > prev)
-	            wordVector.push_back(line.substr(prev, pos-prev));
-	        prev = pos+1;
-	    }
-	    if (prev < line.length())
-	        wordVector.push_back(line.substr(prev, std::string::npos));
-
+	Token(int m_type, std::string m_content) {
+		type = m_type;
+		content = m_content;
 	}
+
+	int getType() {
+		return type;
+	}
+
+	std::string getContent() {
+		return content;
+	}
+};
+
+std::vector<Token> Lexer(std::string input) {
+	std::cout << "Beginning Lexer Process\n";
+
+	std::vector<std::string> wordVector = split(input);
+	std::vector<Token> tokens;
 
 		for (auto it = wordVector.begin(); it != wordVector.end(); it++) {
 			std::cout << *it << "\n";
-		}
-	
-	std::vector<std::string> tokentable;
-	std::vector<std::string> tokencontent;
-
-	for (auto it = wordVector.begin(); it != wordVector.end(); it++) {
-		if (it->compare("\"") == 0) {
-			tokentable.push_back("1");
-			tokencontent.push_back("\"");
+		if (*it == "\"") {
+			tokens.push_back(Token(0,*it));
 		} else {
-			std::cout << "yes";
-			tokentable.push_back("0");
-			tokencontent.push_back(*it);
-			std::cout << tokentable.size();
-		}
+			tokens.push_back(Token(1,*it));
+		}	
 	}
 
-	std::vector<std::string> ret[2];
-	ret[0] = tokentable;
-	ret[1] = tokencontent;
-	
-	return &ret[0];
+
+	return tokens;
 }
-
-

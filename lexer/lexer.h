@@ -1,4 +1,6 @@
 #include <string>
 #include <vector>
 
-std::vector<std::string>* lexer(std::string input);
+class Token;
+
+std::vector<Token> Lexer(std::string input);
