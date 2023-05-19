@@ -16,7 +16,7 @@ std::vector<Token> Lexer(std::string input) {
 		for (auto it = wordVector.begin(); it != wordVector.end(); it++) {
 		if (*it == "\"") {
 			if (str == true) { 
-				tokens.push_back(Token(0,c_str));
+				tokens.push_back(Token(STRING,c_str));
 				c_str = "";
 				str = false;
 			} else { 
@@ -25,9 +25,9 @@ std::vector<Token> Lexer(std::string input) {
 		} else if (str == true) {
 			c_str.append(*it+" ");
 		} else if (*it == "\n") {
-			tokens.push_back(Token(2, "\\n"));
+			tokens.push_back(Token(NEWLINE, "\\n"));
 		} else {
-			tokens.push_back(Token(1,*it));
+			tokens.push_back(Token(TERM,*it));
 		}	
 	}
 

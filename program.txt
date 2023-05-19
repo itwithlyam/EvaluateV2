@@ -1,2 +1,3 @@
 print "Hello, world!"
 print "Also, hi there!"
+print "How simple..."
