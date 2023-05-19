@@ -8,5 +8,7 @@ std::vector<std::string> split(const std::string& s);
 enum TokenType {
 	STRING,
 	TERM,
-	NEWLINE
+	NEWLINE,
+	BRACKET_OPEN,
+	BRACKET_CLOSE
 };

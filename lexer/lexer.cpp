@@ -26,6 +26,10 @@ std::vector<Token> Lexer(std::string input) {
 			c_str.append(*it+" ");
 		} else if (*it == "\n") {
 			tokens.push_back(Token(NEWLINE, "\\n"));
+		} else if (*it == "(") {
+			tokens.push_back(Token(BRACKET_OPEN, *it));
+		} else if (*it == ")") {
+			tokens.push_back(Token(BRACKET_CLOSE, *it));
 		} else {
 			tokens.push_back(Token(TERM,*it));
 		}	

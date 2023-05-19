@@ -22,7 +22,7 @@ std::string readFile(std::string filename)
 std::vector<std::string> split(const std::string& s) {
   std::vector<std::string> elems;
 
-  std::regex re("([\"\\n]|[^\"\\s\\n]+)");
+  std::regex re("([\"\\n()]|[^\"\\s\\n()]+)");
 
   std::sregex_token_iterator iter(s.begin(), s.end(), re);
   std::sregex_token_iterator end;
