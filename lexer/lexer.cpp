@@ -30,7 +30,15 @@ std::vector<Token> Lexer(std::string input) {
 			tokens.push_back(Token(BRACKET_OPEN, *it));
 		} else if (*it == ")") {
 			tokens.push_back(Token(BRACKET_CLOSE, *it));
-		} else {
+		} else if (*it == "==") {
+      tokens.push_back(Token(EQUALS, *it));
+    } else if (*it == "=") {
+      tokens.push_back(Token(ASSIGNMENT, *it));
+    } else if (*it == "{") {
+      tokens.push_back(Token(BLOCK_OPEN, *it));
+    } else if (*it == "}") {
+      tokens.push_back(Token(BLOCK_CLOSE, *it));
+    } else {
 			tokens.push_back(Token(TERM,*it));
 		}	
 	}

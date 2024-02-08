@@ -1,3 +1,4 @@
-print("Hello, world!")
-print("Also, hi there!")
-print("How simple...")
+int num = 23
+if (num == 23) {
+  output "hello world"
+}

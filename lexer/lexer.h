@@ -1,17 +1,20 @@
 #include <string>
 #include <vector>
+#include "../util.h"
+
+#pragma once
 
 class Token {
 public:
-	int type;
+	TokenType type;
 	std::string content;
 
-	Token(int m_type, std::string m_content) {
+	Token(TokenType m_type, std::string m_content) {
 		type = m_type;
 		content = m_content;
 	}
 
-	Token(int m_type) {
+	Token(TokenType m_type) {
 		type = m_type;
 		content = "";
 	}
